@@ -1,0 +1,490 @@
+.pageHeader {
+    margin-bottom: var(--space-6);
+}
+
+.pageTitle {
+    font-size: var(--font-2xl);
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: var(--space-2);
+}
+
+.pageDesc {
+    color: var(--text-secondary);
+    font-size: var(--font-base);
+}
+
+.tabs {
+    display: flex;
+    gap: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-6);
+}
+
+.tab {
+    padding: var(--space-3) 0;
+    color: var(--text-muted);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tabActive {
+    color: var(--text-main);
+    border-bottom-color: var(--color-primary);
+}
+
+/* Vault Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+}
+
+.vaultCard {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.vaultCard:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-active);
+}
+
+.vaultHeader {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.vaultTitle {
+    font-size: var(--font-lg);
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: var(--space-1);
+}
+
+.vaultManager {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.riskTag {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--bg-input);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.riskLow {
+    color: var(--color-success);
+}
+
+.riskMed {
+    color: #F59E0B;
+}
+
+.riskHigh {
+    color: var(--color-danger);
+}
+
+.vaultStats {
+    padding: var(--space-4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.statLabel {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.statValue {
+    font-size: var(--font-base);
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.vaultActions {
+    padding: var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+}
+
+.depositBtn {
+    width: 100%;
+    padding: var(--space-2);
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.depositBtn:hover {
+    background-color: var(--bg-panel-hover);
+    border-color: var(--color-primary);
+}
+
+/* Leaderboard */
+.leaderboard {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.leaderboard td {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-sm);
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.rankCell {
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.rankTop {
+    color: var(--color-primary);
+}
+
+.pageHeader {
+    margin-bottom: var(--space-6);
+}
+
+.pageTitle {
+    font-size: var(--font-2xl);
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: var(--space-2);
+}
+
+.pageDesc {
+    color: var(--text-secondary);
+    font-size: var(--font-base);
+}
+
+.tabs {
+    display: flex;
+    gap: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-6);
+}
+
+.tab {
+    padding: var(--space-3) 0;
+    color: var(--text-muted);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tabActive {
+    color: var(--text-main);
+    border-bottom-color: var(--color-primary);
+}
+
+/* Vault Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+}
+
+.vaultCard {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.vaultCard:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-active);
+}
+
+.vaultHeader {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.vaultTitle {
+    font-size: var(--font-lg);
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: var(--space-1);
+}
+
+.vaultManager {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.riskTag {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--bg-input);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.riskLow {
+    color: var(--color-success);
+}
+
+.riskMed {
+    color: #F59E0B;
+}
+
+.riskHigh {
+    color: var(--color-danger);
+}
+
+.vaultStats {
+    padding: var(--space-4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.statLabel {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.statValue {
+    font-size: var(--font-base);
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.vaultActions {
+    padding: var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+}
+
+.depositBtn {
+    width: 100%;
+    padding: var(--space-2);
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.depositBtn:hover {
+    background-color: var(--bg-panel-hover);
+    border-color: var(--color-primary);
+}
+
+/* Leaderboard */
+.leaderboard {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.leaderboard td {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-sm);
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.rankCell {
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.rankTop {
+    color: var(--color-primary);
+}
+
+/* Likeli Vault Specifics */
+.likeliVaultCard {
+    border-top: 2px solid var(--color-primary);
+}
+
+.strategyDesc {
+    padding: 0 var(--space-4) var(--space-4);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Vault Detail & Chat */
+.detailContainer {
+    display: flex;
+    gap: var(--space-6);
+    height: calc(100vh - 100px);
+}
+
+.detailMain {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.detailSidebar {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatContainer {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.chatHeader {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.messageHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.userName {
+    font-size: var(--font-xs);
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.managerName {
+    font-size: var(--font-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.managerBadge {
+    font-size: 8px;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 1px 4px;
+    border-radius: 2px;
+}
+
+.messageTime {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.messageText {
+    font-size: var(--font-sm);
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.chatInputArea {
+    padding: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    gap: var(--space-2);
+}
+
+.chatInput {
+    flex: 1;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    color: var(--text-main);
+    font-size: var(--font-sm);
+}
+
+.sendBtn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

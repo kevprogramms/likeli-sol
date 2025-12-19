@@ -1,0 +1,271 @@
+/* === HOMEPAGE STYLES - Premium Kalshi-level Design === */
+
+/* Controls Row */
+.controlsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) 0;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.controlsLeft {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* Tab Group - Pill style */
+.tabGroup {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: var(--radius-xl);
+    background: var(--bg-panel);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+}
+
+.tab:hover {
+    color: var(--text-main);
+    background: var(--bg-panel-hover);
+}
+
+.tabActive {
+    background: var(--color-primary) !important;
+    color: white !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.tabBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    background: var(--bg-input);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.tabActive .tabBadge {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.tabBadgeGraduating {
+    background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
+    color: white;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.85;
+        transform: scale(1.05);
+    }
+}
+
+/* Header Actions */
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-left: auto;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border-radius: var(--radius-lg);
+    padding: 10px 20px;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: none;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btnPrimary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: white;
+    box-shadow: 0 2px 8px var(--color-primary-glow);
+}
+
+.btnPrimary:hover {
+    box-shadow: 0 4px 16px var(--color-primary-glow);
+    transform: translateY(-1px);
+}
+
+.btnOutline {
+    background: var(--bg-panel);
+    color: var(--text-main);
+    border: 1px solid var(--border-default);
+}
+
+.btnOutline:hover {
+    background: var(--bg-panel-hover);
+    border-color: var(--border-active);
+}
+
+/* Search Bar */
+.searchBar {
+    position: relative;
+    width: 280px;
+}
+
+.searchInput {
+    width: 100%;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 10px 14px 10px 40px;
+    color: var(--text-main);
+    font-size: var(--font-sm);
+    transition: all var(--transition-normal);
+}
+
+.searchInput::placeholder {
+    color: var(--text-muted);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.searchIcon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+/* Filter Pills */
+.filters {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.filterPill {
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    transition: all var(--transition-normal);
+}
+
+.filterPill:hover {
+    color: var(--text-main);
+    background-color: var(--bg-panel-hover);
+}
+
+.filterPillActive {
+    background-color: var(--bg-panel);
+    color: var(--text-main);
+    border-color: var(--border-default);
+    box-shadow: var(--shadow-xs);
+}
+
+/* Tab Description Banner */
+.tabDescription {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-main) 100%);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-4);
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+.tabDescription p {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+.tabDescription svg {
+    color: var(--color-primary);
+    opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .controlsRow {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .controlsLeft {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .headerActions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .headerActions .btn {
+        flex: 1;
+    }
+
+    .searchBar {
+        width: 100%;
+    }
+
+    .tabGroup {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filters {
+        justify-content: center;
+    }
+}

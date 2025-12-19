@@ -1,0 +1,226 @@
+/* Orderbook Styling - Polymarket-inspired */
+
+.orderbook {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+.orderbook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.orderbook-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.orderbook-info {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.orderbook-spread {
+  color: #94a3b8;
+}
+
+.orderbook-market {
+  margin-bottom: 24px;
+}
+
+.orderbook-market-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.orderbook-sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.orderbook-side {
+  min-height: 200px;
+}
+
+.orderbook-column-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 4px;
+}
+
+.orderbook-column-headers span:nth-child(2),
+.orderbook-column-headers span:nth-child(3) {
+  text-align: right;
+}
+
+.orderbook-rows {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Scrollbar styling */
+.orderbook-rows::-webkit-scrollbar {
+  width: 4px;
+}
+
+.orderbook-rows::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 2px;
+}
+
+.orderbook-rows::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.orderbook-rows::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.orderbook-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 6px 12px;
+  font-size: 13px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  position: relative;
+  border-radius: 4px;
+}
+
+.orderbook-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  transition: width 0.3s ease;
+  opacity: 0.1;
+}
+
+.orderbook-row:hover::before {
+  width: 100%;
+}
+
+/* BUY SIDE (green) */
+.orderbook-bids .orderbook-row {
+  color: #d1fae5;
+}
+
+.orderbook-bids .orderbook-row::before {
+  background: linear-gradient(to right, transparent, #10b981);
+}
+
+.orderbook-bids .orderbook-row:hover {
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.orderbook-price {
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* SELL SIDE (red) */
+.orderbook-asks .orderbook-row {
+  color: #fecaca;
+}
+
+.orderbook-asks .orderbook-row::before {
+  background: linear-gradient(to right, transparent, #ef4444);
+}
+
+.orderbook-asks .orderbook-row:hover {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.orderbook-asks .orderbook-price {
+  color: #ef4444;
+}
+
+.orderbook-size,
+.orderbook-total {
+  text-align: right;
+  color: #cbd5e1;
+}
+
+/* Own orders highlighting */
+.orderbook-row.own {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 2px solid #3b82f6;
+}
+
+.orderbook-row.own .orderbook-price {
+  color: #60a5fa;
+}
+
+/* Expired orders */
+.orderbook-row.expired {
+  opacity: 0.4;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* Loading state */
+.orderbook-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orderbook-sides {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .orderbook-column-headers {
+    font-size: 10px;
+  }
+  
+  .orderbook-row {
+    font-size: 12px;
+  }
+}

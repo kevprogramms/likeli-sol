@@ -1,0 +1,2544 @@
+{
+  "address": "8nuTp2x4c8bF668xLkg51TncSYPGcnyWMQczH8AmVfwJ",
+  "metadata": {
+    "name": "likeli_contracts",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_answer",
+      "docs": [
+        "Add an answer to a multi-choice market"
+      ],
+      "discriminator": [
+        220,
+        86,
+        201,
+        130,
+        104,
+        217,
+        252,
+        242
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "answer",
+          "writable": true
+        },
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "index",
+          "type": "u8"
+        },
+        {
+          "name": "label_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "initial_liquidity",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "buy_multi",
+      "docs": [
+        "Buy shares in a multi-choice answer"
+      ],
+      "discriminator": [
+        118,
+        174,
+        25,
+        88,
+        235,
+        240,
+        221,
+        60
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "answer",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "buyer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "outcome",
+          "type": "bool"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "min_shares_out",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "buy_shares",
+      "docs": [
+        "Buy shares in a binary market with slippage protection"
+      ],
+      "discriminator": [
+        40,
+        239,
+        138,
+        154,
+        8,
+        37,
+        106,
+        108
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "buyer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "outcome",
+          "type": "bool"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "min_shares_out",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "cancel_order",
+      "docs": [
+        "Cancel an order"
+      ],
+      "discriminator": [
+        95,
+        129,
+        237,
+        240,
+        8,
+        49,
+        223,
+        132
+      ],
+      "accounts": [
+        {
+          "name": "order",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "order.market",
+                "account": "LimitOrder"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_multi_winnings",
+      "docs": [
+        "Claim winnings from multi-choice market (legacy - no token transfer)"
+      ],
+      "discriminator": [
+        46,
+        186,
+        5,
+        56,
+        179,
+        169,
+        226,
+        56
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "claimer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "claimer",
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_multi_winnings_with_vault",
+      "docs": [
+        "Claim winnings from multi-choice market with actual token transfer"
+      ],
+      "discriminator": [
+        161,
+        201,
+        37,
+        116,
+        251,
+        202,
+        205,
+        192
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "claimer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "docs": [
+            "Vault authority PDA"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_ata",
+          "docs": [
+            "Vault's token account holding collateral"
+          ],
+          "writable": true
+        },
+        {
+          "name": "claimer_ata",
+          "docs": [
+            "Claimer's token account to receive payout"
+          ],
+          "writable": true
+        },
+        {
+          "name": "claimer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_winnings",
+      "docs": [
+        "Claim winnings after market resolution (legacy - no token transfer)"
+      ],
+      "discriminator": [
+        161,
+        215,
+        24,
+        59,
+        14,
+        236,
+        242,
+        221
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "user_position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "claimer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "claimer",
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_winnings_with_vault",
+      "docs": [
+        "Claim winnings with actual token transfer from vault"
+      ],
+      "discriminator": [
+        144,
+        144,
+        135,
+        2,
+        184,
+        33,
+        231,
+        136
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "user_position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "claimer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "docs": [
+            "Vault authority PDA"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_ata",
+          "docs": [
+            "Vault's token account holding collateral"
+          ],
+          "writable": true
+        },
+        {
+          "name": "claimer_ata",
+          "docs": [
+            "Claimer's token account to receive payout"
+          ],
+          "writable": true
+        },
+        {
+          "name": "claimer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "convert_positions",
+      "docs": [
+        "Convert NO positions to YES + collateral (Polymarket-style NegRisk)",
+        "Only works for is_one_winner = true markets",
+        "",
+        "Formula: If you hold m NO tokens across different answers, you can convert to:",
+        "- (m-1) × amount collateral returned",
+        "- amount YES tokens for each complementary answer",
+        "",
+        "The NO tokens are burned (cannot be redeemed)"
+      ],
+      "discriminator": [
+        50,
+        72,
+        169,
+        118,
+        215,
+        220,
+        138,
+        189
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "docs": [
+            "Vault authority PDA (signs for vault transfers)"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_ata",
+          "docs": [
+            "Vault's token account holding collateral"
+          ],
+          "writable": true
+        },
+        {
+          "name": "user_ata",
+          "docs": [
+            "User's token account to receive collateral"
+          ],
+          "writable": true
+        },
+        {
+          "name": "fee_vault_ata",
+          "docs": [
+            "Fee vault's token account"
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  102,
+                  101,
+                  101,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "index_set",
+          "type": "u16"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "create_market",
+      "docs": [
+        "Create a new binary prediction market"
+      ],
+      "discriminator": [
+        103,
+        226,
+        97,
+        235,
+        200,
+        188,
+        251,
+        254
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "question",
+          "type": "string"
+        },
+        {
+          "name": "resolution_time",
+          "type": "i64"
+        },
+        {
+          "name": "initial_liquidity",
+          "type": "u64"
+        },
+        {
+          "name": "group_id",
+          "type": {
+            "option": "string"
+          }
+        },
+        {
+          "name": "answer_label",
+          "type": {
+            "option": "string"
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_multi_market",
+      "docs": [
+        "Create a new multi-choice market"
+      ],
+      "discriminator": [
+        254,
+        236,
+        68,
+        238,
+        3,
+        131,
+        116,
+        194
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  109,
+                  97,
+                  114,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "creator"
+              },
+              {
+                "kind": "arg",
+                "path": "question_hash"
+              }
+            ]
+          }
+        },
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "question_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "answer_count",
+          "type": "u8"
+        },
+        {
+          "name": "is_one_winner",
+          "type": "bool"
+        },
+        {
+          "name": "initial_liquidity",
+          "type": "u64"
+        },
+        {
+          "name": "fee_bps",
+          "type": "u16"
+        },
+        {
+          "name": "resolution_time",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "create_orderbook",
+      "docs": [
+        "Initialize orderbook for a market"
+      ],
+      "discriminator": [
+        103,
+        86,
+        215,
+        172,
+        216,
+        255,
+        114,
+        218
+      ],
+      "accounts": [
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "get_market_price",
+      "docs": [
+        "Get market price info"
+      ],
+      "discriminator": [
+        154,
+        24,
+        145,
+        82,
+        77,
+        84,
+        117,
+        0
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_vault",
+      "docs": [
+        "Initialize the collateral vault for a multi-choice market",
+        "Must be called after create_multi_market and before any trading"
+      ],
+      "discriminator": [
+        48,
+        191,
+        163,
+        44,
+        71,
+        129,
+        63,
+        164
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "vault_authority",
+          "docs": [
+            "Vault authority PDA"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_ata",
+          "docs": [
+            "Vault's token account for holding collateral"
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "collateral_mint",
+          "docs": [
+            "Collateral token mint (e.g., USDC)"
+          ]
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "merge_positions",
+      "docs": [
+        "Merge YES + NO tokens back to collateral",
+        "User burns equal YES + NO shares and receives collateral"
+      ],
+      "discriminator": [
+        115,
+        76,
+        72,
+        172,
+        120,
+        248,
+        70,
+        208
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "answer"
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "docs": [
+            "Vault authority PDA (signs for vault transfers)"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_ata",
+          "docs": [
+            "Vault's token account holding collateral"
+          ],
+          "writable": true
+        },
+        {
+          "name": "user_ata",
+          "docs": [
+            "User's token account"
+          ],
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "place_multi_order",
+      "docs": [
+        "Place a limit order for a multi-choice market"
+      ],
+      "discriminator": [
+        155,
+        29,
+        254,
+        140,
+        4,
+        82,
+        139,
+        3
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "order",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "answer_index",
+          "type": "u8"
+        },
+        {
+          "name": "price",
+          "type": "u64"
+        },
+        {
+          "name": "qty",
+          "type": "u64"
+        },
+        {
+          "name": "is_yes",
+          "type": "bool"
+        },
+        {
+          "name": "is_bid",
+          "type": "bool"
+        },
+        {
+          "name": "expires_in",
+          "type": {
+            "option": "i64"
+          }
+        }
+      ]
+    },
+    {
+      "name": "place_order",
+      "docs": [
+        "Place a limit order for a binary market"
+      ],
+      "discriminator": [
+        51,
+        194,
+        155,
+        175,
+        109,
+        130,
+        96,
+        106
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "order",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "answer_index",
+          "type": {
+            "option": "u8"
+          }
+        },
+        {
+          "name": "price",
+          "type": "u64"
+        },
+        {
+          "name": "qty",
+          "type": "u64"
+        },
+        {
+          "name": "is_yes",
+          "type": "bool"
+        },
+        {
+          "name": "is_bid",
+          "type": "bool"
+        },
+        {
+          "name": "expires_in",
+          "type": {
+            "option": "i64"
+          }
+        }
+      ]
+    },
+    {
+      "name": "rebalance_market",
+      "docs": [
+        "Rebalance all pools in a NegRisk market to ensure sum(P) = 1"
+      ],
+      "discriminator": [
+        104,
+        130,
+        247,
+        197,
+        247,
+        65,
+        30,
+        81
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "answer",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "buyer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "resolve_answer",
+      "docs": [
+        "Resolve an answer in a multi-choice market"
+      ],
+      "discriminator": [
+        249,
+        247,
+        200,
+        120,
+        45,
+        230,
+        196,
+        48
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "answer",
+          "writable": true
+        },
+        {
+          "name": "resolver",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "outcome",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "resolve_market",
+      "docs": [
+        "Resolve a binary market"
+      ],
+      "discriminator": [
+        155,
+        23,
+        80,
+        173,
+        46,
+        74,
+        23,
+        239
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "resolver",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "outcome",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "sell_multi",
+      "docs": [
+        "Sell shares in a multi-choice answer"
+      ],
+      "discriminator": [
+        221,
+        188,
+        31,
+        114,
+        177,
+        116,
+        92,
+        177
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "answer",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "buyer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "outcome",
+          "type": "bool"
+        },
+        {
+          "name": "shares_to_sell",
+          "type": "u64"
+        },
+        {
+          "name": "min_payout",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "sell_shares",
+      "docs": [
+        "Sell shares in a binary market with slippage protection"
+      ],
+      "discriminator": [
+        184,
+        164,
+        169,
+        16,
+        231,
+        158,
+        199,
+        196
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "orderbook",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111,
+                  114,
+                  100,
+                  101,
+                  114,
+                  98,
+                  111,
+                  111,
+                  107
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "buyer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "outcome",
+          "type": "bool"
+        },
+        {
+          "name": "shares_to_sell",
+          "type": "u64"
+        },
+        {
+          "name": "min_payout",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "set_market_fees",
+      "docs": [
+        "Set fees for a market"
+      ],
+      "discriminator": [
+        196,
+        84,
+        69,
+        197,
+        217,
+        141,
+        37,
+        236
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "creator",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "fee_bps",
+          "type": "u16"
+        },
+        {
+          "name": "creator_fee_bps",
+          "type": "u16"
+        },
+        {
+          "name": "platform_fee_bps",
+          "type": "u16"
+        },
+        {
+          "name": "liquidity_fee_bps",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "set_multi_market_config",
+      "docs": [
+        "Set config for multi-choice market"
+      ],
+      "discriminator": [
+        60,
+        70,
+        69,
+        91,
+        185,
+        138,
+        23,
+        28
+      ],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true
+        },
+        {
+          "name": "creator",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "is_one_winner",
+          "type": "bool"
+        },
+        {
+          "name": "fee_bps",
+          "type": "u16"
+        },
+        {
+          "name": "resolution_time",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "split_position",
+      "docs": [
+        "Split collateral into YES + NO tokens for an answer",
+        "User deposits collateral and receives equal YES + NO shares"
+      ],
+      "discriminator": [
+        172,
+        241,
+        221,
+        138,
+        161,
+        29,
+        253,
+        42
+      ],
+      "accounts": [
+        {
+          "name": "market"
+        },
+        {
+          "name": "answer"
+        },
+        {
+          "name": "position",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  117,
+                  108,
+                  116,
+                  105,
+                  95,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "docs": [
+            "Vault authority PDA (signs for vault transfers)"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "market"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_ata",
+          "docs": [
+            "Vault's token account holding collateral"
+          ],
+          "writable": true
+        },
+        {
+          "name": "user_ata",
+          "docs": [
+            "User's token account"
+          ],
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Answer",
+      "discriminator": [
+        119,
+        227,
+        103,
+        4,
+        0,
+        164,
+        56,
+        37
+      ]
+    },
+    {
+      "name": "LimitOrder",
+      "discriminator": [
+        137,
+        183,
+        212,
+        91,
+        115,
+        29,
+        141,
+        227
+      ]
+    },
+    {
+      "name": "Market",
+      "discriminator": [
+        219,
+        190,
+        213,
+        55,
+        0,
+        227,
+        198,
+        154
+      ]
+    },
+    {
+      "name": "MultiMarket",
+      "discriminator": [
+        194,
+        109,
+        22,
+        219,
+        218,
+        146,
+        190,
+        236
+      ]
+    },
+    {
+      "name": "MultiPosition",
+      "discriminator": [
+        239,
+        14,
+        212,
+        149,
+        206,
+        155,
+        76,
+        93
+      ]
+    },
+    {
+      "name": "Orderbook",
+      "discriminator": [
+        43,
+        34,
+        25,
+        113,
+        195,
+        69,
+        72,
+        7
+      ]
+    },
+    {
+      "name": "UserPosition",
+      "discriminator": [
+        251,
+        248,
+        209,
+        245,
+        83,
+        234,
+        17,
+        27
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "QuestionTooLong",
+      "msg": "Question exceeds maximum length of 200 characters"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidResolutionTime",
+      "msg": "Resolution time must be in the future"
+    },
+    {
+      "code": 6002,
+      "name": "InsufficientLiquidity",
+      "msg": "Initial liquidity must be at least 100"
+    },
+    {
+      "code": 6003,
+      "name": "MarketResolved",
+      "msg": "Market has already been resolved"
+    },
+    {
+      "code": 6004,
+      "name": "MarketNotResolved",
+      "msg": "Market has not been resolved yet"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidAmount",
+      "msg": "Invalid amount"
+    },
+    {
+      "code": 6006,
+      "name": "Unauthorized",
+      "msg": "Only the market creator can perform this action"
+    },
+    {
+      "code": 6007,
+      "name": "TooEarlyToResolve",
+      "msg": "Cannot resolve before resolution time"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidPrice",
+      "msg": "Invalid price (must be 1-9999 basis points)"
+    },
+    {
+      "code": 6009,
+      "name": "InsufficientShares",
+      "msg": "Insufficient shares"
+    },
+    {
+      "code": 6010,
+      "name": "OrderbookFull",
+      "msg": "Orderbook is full (max 100 orders per side)"
+    },
+    {
+      "code": 6011,
+      "name": "OrderNotFound",
+      "msg": "Order not found in orderbook"
+    },
+    {
+      "code": 6012,
+      "name": "FeesTooHigh",
+      "msg": "Total fees exceed 10%"
+    },
+    {
+      "code": 6013,
+      "name": "SlippageExceeded",
+      "msg": "Slippage exceeded - received fewer shares than minimum"
+    },
+    {
+      "code": 6014,
+      "name": "NoWinningShares",
+      "msg": "No winning shares to claim"
+    },
+    {
+      "code": 6015,
+      "name": "InvalidAnswerCount",
+      "msg": "Invalid answer count (must be 2-10)"
+    },
+    {
+      "code": 6016,
+      "name": "InvalidAnswerIndex",
+      "msg": "Invalid answer index"
+    },
+    {
+      "code": 6017,
+      "name": "NotOneWinnerMarket",
+      "msg": "This feature is only available for one-winner markets"
+    },
+    {
+      "code": 6018,
+      "name": "InvalidIndexSet",
+      "msg": "Invalid index set for position conversion"
+    },
+    {
+      "code": 6019,
+      "name": "NoConvertiblePositions",
+      "msg": "No convertible positions"
+    },
+    {
+      "code": 6020,
+      "name": "AnswerAlreadyResolved",
+      "msg": "Answer has already been resolved"
+    },
+    {
+      "code": 6021,
+      "name": "WinnerAlreadyDeclared",
+      "msg": "A winner has already been declared for this market"
+    }
+  ],
+  "types": [
+    {
+      "name": "Answer",
+      "docs": [
+        "Answer in a multi-choice market"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "market",
+            "type": "pubkey"
+          },
+          {
+            "name": "index",
+            "type": "u8"
+          },
+          {
+            "name": "label_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "yes_pool",
+            "type": "u64"
+          },
+          {
+            "name": "no_pool",
+            "type": "u64"
+          },
+          {
+            "name": "volume",
+            "type": "u64"
+          },
+          {
+            "name": "resolved",
+            "type": "bool"
+          },
+          {
+            "name": "outcome",
+            "type": {
+              "option": "bool"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LimitOrder",
+      "docs": [
+        "Limit order"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "market",
+            "type": "pubkey"
+          },
+          {
+            "name": "answer_index",
+            "type": {
+              "option": "u8"
+            }
+          },
+          {
+            "name": "price",
+            "type": "u64"
+          },
+          {
+            "name": "qty",
+            "type": "u64"
+          },
+          {
+            "name": "filled_qty",
+            "type": "u64"
+          },
+          {
+            "name": "is_yes",
+            "type": "bool"
+          },
+          {
+            "name": "is_bid",
+            "type": "bool"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "expires_at",
+            "type": {
+              "option": "i64"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Market",
+      "docs": [
+        "Binary market (YES/NO)"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "question",
+            "type": "string"
+          },
+          {
+            "name": "resolution_time",
+            "type": "i64"
+          },
+          {
+            "name": "yes_pool",
+            "type": "u64"
+          },
+          {
+            "name": "no_pool",
+            "type": "u64"
+          },
+          {
+            "name": "total_volume",
+            "type": "u64"
+          },
+          {
+            "name": "resolved",
+            "type": "bool"
+          },
+          {
+            "name": "outcome",
+            "type": "bool"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "group_id",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "answer_label",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "fee_bps",
+            "type": "u16"
+          },
+          {
+            "name": "creator_fee_bps",
+            "type": "u16"
+          },
+          {
+            "name": "platform_fee_bps",
+            "type": "u16"
+          },
+          {
+            "name": "liquidity_fee_bps",
+            "type": "u16"
+          },
+          {
+            "name": "collected_fees",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MultiMarket",
+      "docs": [
+        "Multi-choice market"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "question_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "answer_count",
+            "type": "u8"
+          },
+          {
+            "name": "is_one_winner",
+            "type": "bool"
+          },
+          {
+            "name": "volume",
+            "type": "u64"
+          },
+          {
+            "name": "fee_bps",
+            "type": "u16"
+          },
+          {
+            "name": "resolution_time",
+            "type": "i64"
+          },
+          {
+            "name": "resolved",
+            "type": "bool"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "answers_resolved",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MultiPosition",
+      "docs": [
+        "User position in multi-choice market"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "market",
+            "type": "pubkey"
+          },
+          {
+            "name": "yes_shares",
+            "type": {
+              "array": [
+                "u64",
+                10
+              ]
+            }
+          },
+          {
+            "name": "no_shares",
+            "type": {
+              "array": [
+                "u64",
+                10
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Orderbook",
+      "docs": [
+        "Orderbook for a market (size optimized for 10KB limit)"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "market",
+            "type": "pubkey"
+          },
+          {
+            "name": "yes_buy_orders",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "yes_sell_orders",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "no_buy_orders",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "no_sell_orders",
+            "type": {
+              "vec": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserPosition",
+      "docs": [
+        "User position in binary market"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "market",
+            "type": "pubkey"
+          },
+          {
+            "name": "yes_shares",
+            "type": "u64"
+          },
+          {
+            "name": "no_shares",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}

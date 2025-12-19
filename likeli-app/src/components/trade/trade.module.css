@@ -1,0 +1,629 @@
+/* Layout */
+.container {
+    display: flex;
+    gap: var(--space-6);
+    height: calc(100vh - 100px);
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.leftColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-width: 0;
+    overflow-y: auto;
+}
+
+.rightColumn {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+/* Market Header - Premium Style */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+    padding: var(--space-4);
+    background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-page) 100%);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-subtle);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    line-height: 1.3;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.tag:hover {
+    border-color: var(--border-active);
+    background: var(--bg-panel-hover);
+}
+
+/* Chart Container - Premium Card */
+.chartCard {
+    flex: 1;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 400px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-normal);
+}
+
+.chartCard:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.chartHeader {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modeToggle {
+    display: flex;
+    background-color: var(--bg-input);
+    border-radius: var(--radius-md);
+    padding: 2px;
+}
+
+.modeBtn {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-xs);
+    font-weight: 500;
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modeBtnActive {
+    background-color: var(--bg-panel);
+    color: var(--text-main);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.chartArea {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Trade Panel */
+.tradePanel {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.panelTabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-2);
+}
+
+.panelTab {
+    flex: 1;
+    text-align: center;
+    padding-bottom: var(--space-2);
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.panelTabActive {
+    color: var(--text-main);
+    border-bottom-color: var(--color-primary);
+}
+
+.outcomeToggle {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.outcomeBtn {
+    flex: 1;
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-input);
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.outcomeBtnYes.active {
+    background-color: rgba(34, 197, 94, 0.1);
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+.outcomeBtnNo.active {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.label {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    color: var(--text-main);
+    font-size: var(--font-lg);
+    font-weight: 500;
+}
+
+.inputSuffix {
+    position: absolute;
+    right: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: var(--font-sm);
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    background-color: var(--bg-input);
+    border-radius: var(--radius-md);
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-sm);
+}
+
+.actionBtn {
+    width: 100%;
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    border: none;
+    font-weight: 600;
+    font-size: var(--font-base);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btnBuy {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btnBuy:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Advanced Specifics */
+.leverageSlider {
+    width: 100%;
+    margin: var(--space-2) 0;
+}
+
+.orderBook {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.obHeader {
+    display: flex;
+    padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.obRow {
+    display: flex;
+    padding: 2px var(--space-4);
+    font-size: var(--font-xs);
+    cursor: pointer;
+}
+
+.obRow:hover {
+    background-color: var(--bg-panel-hover);
+}
+
+.obPrice {
+    flex: 1;
+}
+
+.obSize {
+    flex: 1;
+    text-align: right;
+}
+
+.obTotal {
+    flex: 1;
+    text-align: right;
+    color: var(--text-muted);
+}
+
+.textGreen {
+    color: var(--color-success);
+}
+
+.textRed {
+    color: var(--color-danger);
+}
+
+/* Missing Button Styles */
+.sideToggle {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.sideBtn {
+    flex: 1;
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-input);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.sideBtn:hover {
+    background-color: var(--bg-panel-hover);
+    border-color: var(--border-active);
+}
+
+.sideBtnYes {
+    color: var(--color-success);
+    background-color: rgba(34, 197, 94, 0.05);
+    border-color: rgba(34, 197, 94, 0.2);
+}
+
+.sideBtnYes:hover {
+    background-color: rgba(34, 197, 94, 0.1);
+}
+
+.sideBtnNo {
+    color: var(--color-danger);
+    background-color: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.sideBtnNo:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.orderTypeTabs {
+    display: flex;
+    background-color: var(--bg-input);
+    padding: 2px;
+    border-radius: var(--radius-md);
+    gap: 2px;
+}
+
+.orderTypeTab {
+    flex: 1;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-xs);
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.orderTypeTab:hover {
+    color: var(--text-main);
+}
+
+.orderTypeTabActive {
+    background-color: var(--bg-panel);
+    color: var(--text-main);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+}
+
+.modeIndicator {
+    font-size: var(--font-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+    background-color: rgba(230, 57, 70, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animateDraw {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: draw 1.5s ease-out forwards;
+}
+
+/* Multi-Choice Answer List */
+.multiChoiceContainer {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    /* Allow content to expand, let parent handle scroll */
+}
+
+.multiChoiceHeader {
+    display: flex;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.multiChoiceHeader span:first-child {
+    flex: 1;
+}
+
+.multiChoiceHeader span:nth-child(2) {
+    width: 60px;
+    text-align: center;
+}
+
+.multiChoiceHeader span:nth-child(3) {
+    width: 120px;
+    text-align: center;
+}
+
+.answerList {
+    /* No max-height - let parent scroll handle it */
+    display: block;
+}
+
+.answerItem {
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.answerItem:last-child {
+    border-bottom: none;
+}
+
+.answerMain {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    min-height: 48px;
+}
+
+.answerProbBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
+    z-index: 0;
+}
+
+.answerInfo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    z-index: 1;
+}
+
+.answerRank {
+    font-weight: 700;
+    font-size: var(--font-sm);
+    color: var(--color-primary);
+    min-width: 42px;
+}
+
+.answerText {
+    font-size: var(--font-sm);
+    color: var(--text-main);
+}
+
+.answerActions {
+    display: flex;
+    gap: 6px;
+    z-index: 1;
+}
+
+.answerBtn {
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.answerBtnYes {
+    background: transparent;
+    border: 1px solid var(--color-success);
+    color: var(--color-success);
+}
+
+.answerBtnYes:hover {
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.answerBtnNo {
+    background: transparent;
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+}
+
+.answerBtnNo:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Expanded Trade Panel */
+.answerTradePanel {
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-input);
+    border-top: 1px solid var(--border-subtle);
+}
+
+.answerTradeRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.answerTradeRow label {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    min-width: 80px;
+}
+
+.answerInput {
+    flex: 1;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-panel);
+    color: var(--text-main);
+    font-size: var(--font-sm);
+}
+
+.answerEstimate {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.answerTradeActions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.answerTradeBtn {
+    flex: 1;
+    padding: var(--space-2);
+    font-size: var(--font-sm);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.answerTradeBtnYes {
+    background: var(--color-success);
+    color: white;
+    border: none;
+}
+
+.answerTradeBtnYes:hover {
+    background: #16a34a;
+}
+
+.answerTradeBtnYes:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.answerTradeBtnNo {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+}
+
+.showMoreBtn {
+    width: 100%;
+    padding: var(--space-3);
+    background: transparent;
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: var(--font-sm);
+    cursor: pointer;
+}
+
+.showMoreBtn:hover {
+    color: var(--text-main);
+    background: var(--bg-input);
+}

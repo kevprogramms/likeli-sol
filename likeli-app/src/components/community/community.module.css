@@ -1,0 +1,725 @@
+/* Community Components Styles - Premium Kalshi-Inspired Design */
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+    --community-gradient-start: #667eea;
+    --community-gradient-end: #764ba2;
+    --community-bg-glass: rgba(255, 255, 255, 0.08);
+    --community-border-glass: rgba(255, 255, 255, 0.12);
+    --community-shadow-glow: 0 0 40px rgba(102, 126, 234, 0.15);
+}
+
+/* ============================================
+   SIDEBAR - Sleek Navigation
+   ============================================ */
+
+.sidebar {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: linear-gradient(180deg, var(--bg-card) 0%, rgba(15, 15, 20, 0.95) 100%);
+    border-right: 1px solid var(--border-subtle);
+    height: 100%;
+    position: relative;
+}
+
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+    pointer-events: none;
+}
+
+.sidebarHeader {
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebarTitle {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.sidebarSubtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.sidebarNav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+.navItem:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+    color: var(--text-main);
+    border-color: var(--community-border-glass);
+    transform: translateX(4px);
+}
+
+.navItemActive {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
+    color: var(--text-main);
+    font-weight: 600;
+    border-color: var(--community-border-glass);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.sidebarDivider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--border-subtle) 50%, transparent 100%);
+    margin: 20px 0;
+}
+
+.sidebarFooterNav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.footerNavItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--text-muted);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.15s;
+    border-radius: 8px;
+}
+
+.footerNavItem:hover {
+    color: var(--text-main);
+    background-color: var(--bg-input);
+}
+
+.postButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+.postButton::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.postButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+.postButton:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   POST COMPOSER - Premium Input
+   ============================================ */
+
+.composer {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.02) 100%);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.composerAvatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.composerAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.composerInput {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.composerTextarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 18px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+}
+
+.composerTextarea::placeholder {
+    color: var(--text-muted);
+}
+
+.linkedMarket {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border: 1px solid var(--community-border-glass);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--community-gradient-start);
+    font-weight: 500;
+}
+
+.removeMarketBtn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0;
+    margin-left: 4px;
+}
+
+.removeMarketBtn:hover {
+    color: var(--color-danger);
+}
+
+.composerActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.linkMarketBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.linkMarketBtn:hover {
+    border-color: var(--community-gradient-start);
+    color: var(--community-gradient-start);
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.composerRight {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.charCount {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.postBtn {
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.postBtn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(102, 126, 234, 0.4);
+}
+
+.postBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ============================================
+   POST CARD - Social Card Design
+   ============================================ */
+
+.postCard {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: all 0.2s;
+    position: relative;
+}
+
+.postCard:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.01) 100%);
+}
+
+.postCard::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.postCard:hover::after {
+    opacity: 1;
+}
+
+.postHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.postAvatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    overflow: hidden;
+    text-decoration: none;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+    transition: transform 0.2s;
+}
+
+.postAvatar:hover {
+    transform: scale(1.05);
+}
+
+.postAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.postUserInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.postUserName {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.postUserName:hover {
+    color: var(--community-gradient-start);
+}
+
+.postTime {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.postContent {
+    font-size: 16px;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    white-space: pre-wrap;
+}
+
+.postActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.actionBtn:hover {
+    color: var(--text-main);
+    background-color: var(--bg-input);
+}
+
+.actionBtnActive {
+    color: var(--community-gradient-start);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.actionBtnActive:hover {
+    color: var(--community-gradient-end);
+    background: rgba(102, 126, 234, 0.15);
+}
+
+/* ============================================
+   MARKET EMBED - Premium Card
+   ============================================ */
+
+.marketEmbed {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.04) 100%);
+    border: 1px solid var(--community-border-glass);
+    border-radius: 14px;
+    margin-bottom: 8px;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s;
+}
+
+.marketEmbed:hover {
+    border-color: var(--community-gradient-start);
+    box-shadow: var(--community-shadow-glow);
+}
+
+.marketQuestion {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+    text-decoration: none;
+    line-height: 1.4;
+}
+
+.marketQuestion:hover {
+    color: var(--community-gradient-start);
+}
+
+.marketOdds {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.oddsYes {
+    color: var(--color-success);
+    padding: 4px 10px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 6px;
+}
+
+.oddsNo {
+    color: var(--color-danger);
+    padding: 4px 10px;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 6px;
+}
+
+.oddsNeutral {
+    color: var(--text-muted);
+}
+
+.priceUp {
+    color: var(--color-success);
+}
+
+.priceDown {
+    color: var(--color-danger);
+}
+
+.buyButton {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.25);
+}
+
+.buyButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+}
+
+/* ============================================
+   FEED LAYOUT - Clean Structure
+   ============================================ */
+
+.feedContainer {
+    display: flex;
+    height: calc(100vh - 64px);
+    background-color: var(--bg-main);
+}
+
+.feedMain {
+    flex: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    border-left: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+}
+
+.feedTabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-subtle);
+    background: linear-gradient(180deg, var(--bg-card) 0%, transparent 100%);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+}
+
+.feedTab {
+    flex: 1;
+    padding: 18px 24px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.feedTab:hover {
+    color: var(--text-main);
+    background: rgba(102, 126, 234, 0.03);
+}
+
+.feedTabActive {
+    color: var(--text-main);
+    font-weight: 600;
+    border-bottom-color: var(--community-gradient-start);
+}
+
+.timeTabs {
+    display: flex;
+    padding: 12px 24px;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+    background-color: var(--bg-card);
+}
+
+.timeTab {
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg-input);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.timeTab:hover {
+    color: var(--text-main);
+    border-color: var(--border-subtle);
+}
+
+.timeTabActive {
+    color: white;
+    background: linear-gradient(135deg, var(--community-gradient-start) 0%, var(--community-gradient-end) 100%);
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.25);
+}
+
+.feedList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.feedList::-webkit-scrollbar {
+    width: 6px;
+}
+
+.feedList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.feedList::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+    border-radius: 3px;
+}
+
+.feedList::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+.emptyFeed {
+    padding: 80px 40px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.emptyFeed::before {
+    content: '💬';
+    font-size: 48px;
+}
+
+.loadingFeed {
+    padding: 80px 40px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 80px;
+        padding: 16px 8px;
+    }
+    
+    .sidebarHeader {
+        display: none;
+    }
+    
+    .navItem span,
+    .footerNavItem span,
+    .sidebarSubtitle {
+        display: none;
+    }
+    
+    .navItem {
+        justify-content: center;
+        padding: 14px;
+    }
+    
+    .postButton span {
+        display: none;
+    }
+    
+    .postButton {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    
+    .feedMain {
+        max-width: 100%;
+        border: none;
+    }
+    
+    .composer {
+        padding: 16px;
+    }
+    
+    .postCard {
+        padding: 16px;
+    }
+}
